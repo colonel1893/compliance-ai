@@ -1,0 +1,11 @@
+streamlit
+prophet
+pandas
+matplotlib
+scikit-learn
+gigachat
+natasha
+python-docx
+PyPDF2
+qdrant-client
+sentence-transformers
