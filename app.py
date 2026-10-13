@@ -97,15 +97,23 @@ def init_gigachat(key):
 st.title("🔍 Комплаенс-анализ документов")
 st.markdown("Проверка документов на соответствие 152-ФЗ")
 
-# Сайдбар
+
+# ========== ПОЛУЧЕНИЕ КЛЮЧА ==========
+# 1. Пробуем взять из секретов Streamlit Cloud
+api_key = st.secrets.get("GIGACHAT_KEY", "")
+
+# 2. Если секрета нет — показываем поле ввода
 with st.sidebar:
     st.header("⚙️ Настройки")
-    api_key = st.text_input("GigaChat API Key", type="password")
+    if not api_key:
+        api_key = st.text_input("GigaChat API Key", type="password")
+    else:
+        st.success("✅ Ключ подключён")
     st.markdown("---")
     st.markdown("**Как использовать:**")
-    st.markdown("1. Вставь API-ключ")
-    st.markdown("2. Загрузи документ")
-    st.markdown("3. Получи отчёт")
+    st.markdown("1. Загрузи документ")
+    st.markdown("2. Получи отчёт")
+
 
 # Загрузка
 uploaded_file = st.file_uploader(
